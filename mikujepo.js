@@ -1,95 +1,14 @@
 import {
-	shift,
-	zip
-} from "@radashi-org/radashi";
+	syllables
+} from "./_common/_exports.js";
+import {
+	base,
+	parseFloatWithRadix
+} from "./library/_exports.js";
 
 /**
- * @import { ReadonlyTuple, Join } from "type-fest";
+ * @import { MikujepoReturnType } from "./_types/_exports.js";
  */
-
-const vowels = /** @type {const} */ ([
-	"i",
-	"u",
-	"e",
-	"o"
-]);
-
-const consonantParts = /** @type {const} */ ([
-	"m",
-	"k",
-	"j",
-	"p",
-	"n",
-	"t",
-	"l",
-	"s"
-]);
-
-/**
- * @template {unknown} ItemTemplate
- * @template {number} TimesTemplate
- * @param {readonly ItemTemplate[]} array
- * @param {TimesTemplate} times
- * @returns {ReadonlyTuple<ItemTemplate, TimesTemplate>}
- * @example
- */
-const repeatArray = (array, times) => /** @type {ReadonlyTuple<ItemTemplate, TimesTemplate>} */ (
-	Array.from({ length: times }, () => array).flat()
-);
-
-/**
- *
- * @template {unknown} ItemTemplate
- * @param {readonly (readonly ItemTemplate[])[]} arrays
- * @returns {readonly (readonly ItemTemplate[])[]}
- * @example
- */
-const adaptArrays = (arrays) => {
-	const maxLength = Math.max(...arrays.map((array) => array.length));
-
-	return arrays
-		.map((array) => (
-			repeatArray(array, Math.ceil(maxLength / array.length))
-				.slice(0, maxLength)
-		));
-};
-
-const [adaptedConsonantParts, adaptedVowels] = adaptArrays([consonantParts, vowels]);
-
-const syllables = consonantParts
-	.map((consonantPart, index) => zip(shift(adaptedConsonantParts, -index), adaptedVowels))
-	.slice(0, vowels.length).flat()
-	.map((letters) => /** @type {Join<letters, "">} */ (letters.join("")));
-
-const base = syllables.length;
-
-/**
- * @template {number | bigint | string} NumberOrStringTemplate
- * @typedef {(
- * NumberOrStringTemplate extends string
- * ? number
- * : NumberOrStringTemplate extends number | bigint
- * ? string
- * : never
- * )} MikujepoReturnType
- */
-
-/**
- * Taken from https://gist.github.com/Hafthor/0a60f918d50113600d7c67252e68a02d
- *
- * @param {string} string
- * @param {number} radix
- * @returns {number}
- * @example
- */
-const parseFloatWithRadix = (string, radix = 10) => {
-	const [integerPart, decimalPart] = (`${string}.`).split(".");
-
-	const l1 = Number.parseInt(`1${decimalPart || ""}`, radix).toString(radix).length;
-
-	return Number.parseInt(integerPart, radix) +
-		(Number.parseInt(decimalPart || "0", radix) / Number.parseInt(`1${Array.from({ length: l1 }).join("0")}`, radix));
-};
 
 /**
  * @template {number | bigint | string} NumberOrStringTemplate
