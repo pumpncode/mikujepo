@@ -1,7 +1,7 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"entry": [
-		"main.js",
+		"mikujepo.js",
 		"scripts/*.js",
 		"eslint.config.js"
 	],

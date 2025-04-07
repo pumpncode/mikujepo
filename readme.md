@@ -1,138 +1,105 @@
-# template
+# mikujepo
 
-[![logo of pumpncode/template][logo-wide]][self]
+A base-32 number naming system. Used as prefixes in [latakama](https://github.com/pumpncode/latakama). Can be written in the base-256 number symbol system [kimisa](https://github.com/pumpncode/kimisa).
 
-This is the main template repository for our projects. It includes the basic structure and important configuration files for a modern JavaScript project.
+## Installation
 
----
-
-> [!NOTE]
-> "Unordered" lists in this document are ordered by priority from top to bottom, but aren't markdown ordered lists because they don't signify fixed sequences of steps.
->
-> This document uses emoji suffixes in some cases to possibly speed up your setup process by highlighting options you may or may not want to take into consideration:
->
-> - The suffix 💎 marks a **recommended** option or extra-step.
-> - The suffix 🤡 marks a possible but **not recommended** option.
-> - The suffixes 🍎 (macOS), 🪟 (Windows and [WSL][wsl]) and 🐧 (Linux) mark information or installation steps unique to **specific platforms**.
-
-## Getting Started
-
-### Prerequisites
-
-If you're a developer, you'll presumably have those or working alternatives, feel free to skip to the [Installation section][installation]. This guide expects you have [Windows][windows], or a Unix or Unix-like operating system ([macOS][mac-os] for example) and a [modern browser][browsehappy] installed. This project should work on every imaginable modern system configuration, but your best bet would be to use a well established and popular one.
-
-- [GitHub Account][github-join] 💎
-- [Git][git]
-	- [macOS][git-macos] 🍎
-	- [Windows][git-windows] 🪟
-	- [Linux][git-linux] 🐧
-- [Deno][deno]
-- [Node.js][node-js] 💎
-	- [Use the download interface][node-js-download]
-- [A source-code editor][source-code-editors]
-
-### Installation
-
-1. Get the template
-	- Create a new repository from template 💎
-		1. Click "Use this template"
-			![Screenshot of "Use this template" button][screenshot-use-template]
-		2. Fill in the details, check "Include all branches" and click "Create repository from template"
-			![Screenshot of Create a new repository from template screen][screenshot-create-from-template]
-		3. Clone your new repository
-
-			```sh
-			git clone https://github.com/username/my-new-repository.git
-			```
-
-	- Create a new repository by cloning 🤡
-		> This completely defeats the purpose of the GitHub template feature, because normal clones (and forks) copy the whole commit history (and other things) but not all branches, which normally isn't what you want when creating a new project based on a boilerplate. Read more [here][github-docs-template].
-		1. Clone this repository into a new folder
-
-			```sh
-			git clone https://github.com/pumpncode/template.git my-new-repository
-			```
-
-2. Set it up
-	1. Go into your new repository folder
-
-		```sh
-		cd my-new-repository
-		```
-
-	2. Initialize the project
-
-		```sh
-		deno task initialize
-		```
+```bash
+deno add jsr:@pumpncode/mikujepo
+```
 
 ## Usage
 
-Because this is a template, the usage depends on what your new project will do. Once everything is installed, you can try running the tasks in the [deno.json][deno-json], these make use of every other feature of this template.
+### Translate to mikujepo
 
-## Roadmap
+```js
+import mikujepo from "@pumpncode/mikujepo";
 
-See the [current projects][projects] and the [open issues][issues] for a list of proposed features and known issues.
+mikujepo(12_345); // "tikunu"
+```
 
-## Contributing
+### Translate from mikujepo
 
-Any contributions you make are **greatly appreciated**.
+```js
+import mikujepo from "@pumpncode/mikujepo";
 
-See the [contributing guide][contributing]  for ways to get started.
+mikujepo("junenumo"); // 314_159
+```
 
-This project has a [code of conduct][code-of-conduct]. By interacting with this repository you agree to follow its terms.
+## Words
 
-## Contact
+### Integers
 
-Pumpn Code - <office@pumpn.net>
+number | word
+--- | ---
+0 | mi
+1 | ku
+2 | je
+3 | po
+4 | ni
+5 | tu
+6 | le
+7 | so
+8 | ki
+9 | ju
+10 | pe
+11 | no
+12 | ti
+13 | lu
+14 | se
+15 | mo
+16 | ji
+17 | pu
+18 | ne
+19 | to
+20 | li
+21 | su
+22 | me
+23 | ko
+24 | pi
+25 | nu
+26 | te
+27 | lo
+28 | si
+29 | mu
+30 | ke
+31 | jo
+32 | kumi
+33 | kuku
+34 | kuje
+⋮ | ⋮
+64 | jemi
+65 | jeku
+⋮ | ⋮
+96 | pomi
+⋮ | ⋮
+256 | kimi
+⋮ | ⋮
+1024 | kumimi
+⋮ | ⋮
+32768 | kumimimi
 
-Nano Miratus - [@nnmrts][nnmrts-github] - <nanomiratus@gmail.com>
+### Non-integers
 
-Project Link: <https://github.com/pumpncode/template>
+"ba" is the mikujepo syllable for "comma".
 
-## Acknowledgments
+number | word
+--- | ---
+$0.125$ ($\frac{1}{8}$) | mibani
+$0.25$ ($\frac{1}{4}$) | mibaki
+$0.4342944819032518$ ($\approx\log_{10}{(2)}$) | mibalusimekepisunilonejisi
+$0.5$ ($\frac{1}{2}$) | mibaji
+$0.6931471805599453$ ($\approx\ln{(2)}$) | mibametunukumomukepunumusi
+$0.7071067811865476$ ($\approx\sqrt{\frac{1}{2}}$) | mibamelijemoletijonulonuli
+$1.4142135623730951$ ($\approx\sqrt{2}$) | kubalukiniketinujotokotoki
+$1.4426950408889634$ ($\approx\log_{2}{(e)}$) | kubasetupesotilisupitujoji
+$1.5$ ($1\frac{1}{2}$) | kubaji
+$2.302585092994046$ ($\approx\ln{(10)}$) | jebajusuloposemusupelino
+$2.718281828459045$ ($\approx e$) | jebamejojisujepilipemuliji
+$3.141592653589793$ ($\approx\pi$) | pobanijijomesujenituliti
+$123.456$ | polobasenekelelijokonuloji
+$1024.03125$ | kumimibaku
 
-- [unified][unified]
-- [remark][remark]
-- [Best-README-Template][best-readme-tempplate]
+## Naming
 
-## Contributors
-
-| Name | Website | GitHub |
-| -- | -- | -- |
-| **Nano Miratus** | <https://pumpn.net/> | [**@nnmrts**][nnmrts-github] |
-
-## License
-
-[0BSD][license] © [Pumpn Code][pumpn-website]
-
-[logo-wide]: https://github.com/pumpncode/logos/raw/refs/heads/main/projects/template/wide.svg
-[self]: https://github.com/pumpncode/template
-[wsl]: https://docs.microsoft.com/en-us/windows/wsl/about
-[installation]: #installation
-[windows]: https://www.microsoft.com/windows
-[mac-os]: https://www.apple.com/macos
-[browsehappy]: https://browsehappy.com
-[github-join]: https://github.com/join
-[git]: https://git-scm.com
-[git-macos]: https://git-scm.com/download/mac
-[git-windows]: https://git-scm.com/download/win
-[git-linux]: https://git-scm.com/download/linux
-[deno]: https://deno.com
-[node-js]: https://nodejs.org
-[node-js-download]: https://nodejs.org/en/download
-[source-code-editors]: https://en.wikipedia.org/wiki/Source-code_editor#Notable_examples
-[screenshot-use-template]: /media/images/screenshots/use-template.png
-[screenshot-create-from-template]: /media/images/screenshots/create-from-template.png
-[github-docs-template]: https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#about-repository-templates
-[deno-json]: /deno.json
-[projects]: https://github.com/pumpncode/template/projects
-[issues]: https://github.com/pumpncode/template/issues
-[contributing]: https://github.com/pumpncode/.github/contributing.md
-[code-of-conduct]: https://github.com/pumpncode/.github/code-of-conduct.md
-[nnmrts-github]: https://github.com/nnmrts
-[unified]: https://unifiedjs.com
-[remark]: https://github.com/remarkjs
-[best-readme-tempplate]: https://github.com/othneildrew/Best-README-Template
-[license]: /license.md
-[pumpn-website]: https://pumpn.net
+The name **mikujepo** is constructed from the first four digits ("mi", "ku", "je", "po").

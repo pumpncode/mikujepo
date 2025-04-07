@@ -49,6 +49,7 @@
 		"kv"
 	],
 	"imports": {
-		"@std/path": "jsr:@std/path@^1.0.8"
+		"@radashi-org/radashi": "jsr:@radashi-org/radashi@^12.4.0",
+		"type-fest": "npm:type-fest@^4.39.1"
 	}
 }
